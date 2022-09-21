@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
+    <title>login</title>
+</head>
+
+<body>
+    <div>
+        <h2>Log you in before starting!</h2>
+        <img src="/images/funny-picture-wrong-password-login.jpg" alt="funny login" style="padding-bottom: 20px;">
+        <br>
+        <form action="http://localhost:3001/" method="post" "> <!--onsubmit="return myOnSubmit(this)-->
+            Login: <input type="text" name="username" id="userneme" required>
+            <br>
+            Password : <input type="password" name="psw" id="psw" required>
+            <button type="submit">Login</button>
+        </form>
+        <br>
+    </div>
+    <script>
+        function myOnSubmit(aForm) {
+            //Getting the two input objects
+            var inputUsername = aForm['username'];
+            var inputPassword = aForm['password'];
+
+            //Hashing the values before submitting
+            inputUsername.value = sha256_hash(inputUsername.value);
+            inputPassword.value = sha256_hash(inputPassword.value);
+
+            //Submitting
+            return true;
+        }
+    </script>
+</body>
+
+</html>
